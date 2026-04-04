@@ -1,1 +1,28 @@
 @import "tailwindcss";
+
+.errMsg {
+    animation: errDiv 2s linear infinite;
+    font-family: "Montserrat", sans-serif;
+}
+
+@keyframes errDiv {
+    0% {
+        box-shadow: 10px 0px 10px black;
+    }
+
+    25% {
+        box-shadow: 0px 10px 10px black;
+    }
+
+    50% {
+        box-shadow: -10px 0px 10px black;
+    }
+
+    75% {
+        box-shadow: 0px -10px 10px black;
+    }
+
+    100% {
+        box-shadow: 10px 0px 10px black;
+    }
+}
