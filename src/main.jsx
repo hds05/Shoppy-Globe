@@ -4,19 +4,42 @@ import './index.css'
 import App from './App.jsx'
 import { createBrowserRouter, RouterProvider } from 'react-router-dom'
 import NotFoundPage from './Components/NotFoundPage.jsx'
+import Cart from './Components/Cart.jsx'
+import Search from './Components/Search.jsx'
+ import ProductDetail from './Components/ProductDetail.jsx'
 import ProductList from './Components/ProductList.jsx'
-
 
 const appRouter = createBrowserRouter([
   {
-    path:'/',
+    // Home route
+    path: '/',
     element: <App />,
-    errorElement: <NotFoundPage />
+    errorElement: <NotFoundPage />,
+    children: [
+      {
+        // Home route
+        path: '/',
+        element: <>
+          <Search /> 
+          <ProductList />
+        </>
+      },
+      {
+        // Product detail route
+        path: '/productdetail',
+        element: <ProductDetail />
+      },
+      {
+        // Cart route
+        path: '/cart',
+        element: <Cart />
+      },
+      // checkout route
+      {
+        path: '/checkout'
+      }
+    ],
   },
-  {
-    path:'/productlist',
-    element: <ProductList />
-  }
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>

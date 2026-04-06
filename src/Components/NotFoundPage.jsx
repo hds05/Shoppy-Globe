@@ -12,9 +12,9 @@ function NotFoundPage() {
         <h1 className='text-2xl'>
           {err.status}: {err.statusText}
         </h1>
-        {err.error.message}
-        <div className='p-2 rounded-2xl bg-[rgba(9_0_31)] text-white cursor-pointer mt-2'>
-          <Link to={'/'}>Back to Home</Link>
+        {err.error?err.error.message:'Something went worng'}
+        <div className='mt-2 p-2'>
+          <Link to={'/'} className='p-2 rounded-2xl bg-[rgba(9_0_31)] text-white cursor-pointer'>Back to Home</Link>
         </div>
       </div>
     </div>
