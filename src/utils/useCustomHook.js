@@ -10,12 +10,14 @@ export function useCustomHook() {
                 let data = await axios.get('https://dummyjson.com/products')
                 console.log(data.data.products)
                 setProductData(data.data.products)
+            } catch (err) {
+                console.error(err)
+            }
+            finally {
                 setLoading(false)
-            } catch {
-                
             }
         }
         fetchData()
     }, [])
-    return productData
+    return {productData, loading}
 }

@@ -8,8 +8,11 @@ import Search from './Components/Search'
 import { Outlet } from 'react-router-dom'
 
 function App() {
-  const [count, setCount] = useState(0)
+  // const [cart, setCart] = useState([])
+  // const [data, setData] = useState([])
+  // useEffect(() => {
 
+  // }, [])
   return (
     <>
       <Header />

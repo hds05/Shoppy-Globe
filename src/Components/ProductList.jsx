@@ -1,27 +1,21 @@
 import React, { useState } from 'react'
 import { useCustomHook } from '../utils/useCustomHook';
+import ProductItem from './ProductItem';
 
 function ProductList() {
-  const data = useCustomHook();
-  console.log(data);
+  const { productData, loading } = useCustomHook();
+  console.log([productData, loading, 'data from custom hook']);
   // const [productData, setProductData] = useState(data)
-  
+  if (loading) return <h1>Loading...</h1>
   return (
     <>
-      <div>ProductList</div>
-      {
-        data.map((el)=>{
-          return (
-            <div key={el.id}>
-              Product List
-                <h1>{el.brand}</h1>
-                <h1>{el.category}</h1>
-                <img src={el.thumbnail} alt="" />
-                <p>{el.description}</p>
-            </div>
-          )
-        })
-      }
+      <div className='grid grid-cols-4 p-4 justify-center gap-6'>
+        {
+          productData.map((el) => (
+            <ProductItem key={el.id} data={el} />
+          ))
+        }
+      </div>
     </>
   )
 }
