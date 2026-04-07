@@ -1,14 +1,25 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useCustomHook } from '../utils/useCustomHook';
 import ProductItem from './ProductItem';
 import Loader from './Loader';
+import NotFoundPage from './NotFoundPage';
 
 function ProductList() {
-  const { productData, loading } = useCustomHook();
-  console.log([productData, loading, 'data from custom hook']);
-  // const [productData, setProductData] = useState(data)
-  // can i use useEffect here to use setTimeOut for loader???
+  const { data, loading, error } = useCustomHook('https://dummyjson.com/products');
+  // console.log([productData, loading, error ,'fetched data from Product list']);
+  const [productData, setProductData] = useState([])
+  useEffect(() => {
+    if (data) {
+      setProductData(data)
+    }
+  }, [data])
   if (loading) return <Loader />
+  if (error) return <div className='flex justify-center items-center m-2'>
+    <div className='flex flex-col items-center w-fit p-4 shadow-[0px_0px_2px_gray] rounded-4xl'>
+      <img src="/404.gif" width={'250px'} alt="" />
+      <p>{error.message}</p>
+    </div>
+  </div>
   return (
     <>
       <div className='grid grid-cols-4 p-4 justify-center gap-6'>
