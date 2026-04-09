@@ -19,10 +19,11 @@ const appRouter = createBrowserRouter([
       {
         // Home route
         path: '/',
-        element: <>
-          <Search /> 
+        element: 
+        // <>
+        //   <Search /> 
           <ProductList />
-        </>
+        // </>
       },
       {
         // Product detail route

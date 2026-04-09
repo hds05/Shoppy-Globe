@@ -3,6 +3,7 @@ import { useCustomHook } from '../utils/useCustomHook';
 import ProductItem from './ProductItem';
 import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
+import Search from './Search';
 
 function ProductList() {
   const { data, loading, error } = useCustomHook('https://dummyjson.com/products');
@@ -22,6 +23,7 @@ function ProductList() {
   </div>
   return (
     <>
+      <Search productData={productData} setProductData={setProductData} />
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:p-4 justify-center gap-0 md:gap-6'>
         {
           productData.map((el) => (
