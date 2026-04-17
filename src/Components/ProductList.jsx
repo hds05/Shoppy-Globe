@@ -6,7 +6,7 @@ import NotFoundPage from './NotFoundPage';
 import Search from './Search';
 
 function ProductList() {
-  const { data, loading, error } = useCustomHook('https://dummyjson.com/products');
+  const { data, loading, error } = useCustomHook();
   // console.log([productData, loading, error ,'fetched data from Product list']);
   const [productData, setProductData] = useState([])
   useEffect(() => {
