@@ -7,7 +7,9 @@ function Footer() {
         <footer className="bg-gray-300 text-black text-center px-6 py-10 mt-10">
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className='flex flex-col items-center'>
-                    <img src="/shoppyglobe.png" width={'300px'} alt="" />
+                    <a href="#">
+                        <img src="/shoppyglobe.png" width={'300px'} alt="" />
+                    </a>
                     <p className="text-sm text-gray-900">
                         Your one-stop destination for all your shopping needs.
                         Fast delivery, best prices, and quality products.

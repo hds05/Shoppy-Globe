@@ -6,6 +6,7 @@ import './App.css'
 import Header from './Components/Header'
 import Search from './Components/Search'
 import { Outlet } from 'react-router-dom'
+import Footer from './Components/Footer'
 
 function App() {
   // const [cart, setCart] = useState([])
@@ -16,9 +17,8 @@ function App() {
   return (
     <>
       <Header />
-      {/* <Search />
-      <CustomHook /> */}
       <Outlet />
+      <Footer />
     </>
   )
 }
