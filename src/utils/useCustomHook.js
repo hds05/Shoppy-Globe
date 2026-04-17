@@ -5,7 +5,6 @@ export function useCustomHook() {
     const [data, setData] = useState([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState(null)
-    console.log(data, loading, error, 'from custom hook');
     
     useEffect(() => {
         async function fetchData() {
@@ -14,7 +13,11 @@ export function useCustomHook() {
                 console.log(data.data.products)
                 setData(data.data.products)
             } catch (err) {
-                setError(err)
+                setError(
+                    err.response?.data?.message ||
+                    err.message ||
+                    "Something went wrong while fetching the data..."
+                )
                 console.error(err)
             }
             finally {
