@@ -28,7 +28,7 @@ function Search(props) {
     // }
     return (
         <div className="flex m-8 gap-4 justify-center">
-            <input type="text" placeholder="Search here..." className="rounded-2xl w-lg shadow-[0px_2px_6px_gray] p-2" value={search} onChange={handleSearch} />
+            <input type="text" placeholder="Search here..." className="bg-white rounded-2xl w-lg shadow-[0px_2px_6px_gray] p-2" value={search} onChange={handleSearch} />
             {/* <button type="submit">
                 <img src="/search.png" className="w-[40px] transition-all hover:scale-125 cursor-pointer" alt="" />
             </button> */}

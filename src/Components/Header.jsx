@@ -32,7 +32,7 @@ function Header() {
     }
 
     return (
-        <header className="sticky top-0 z-50 bg-white shadow-[1px_1px_2px_gray]">
+        <header className="sticky top-0 z-50 bg-white shadow-[1px_1px_5px_gray] rounded-[0px_0px_30px_30px]">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 md:px-10 md:py-6">
 
                 <div className=" w-full md:w-fit flex justify-between">
@@ -83,6 +83,7 @@ function Header() {
                         {dropdown && (
                             <div className="absolute left-1/2 top-8 -translate-x-1/2 md:left-0 md:translate-x-0 w-[180px] bg-white shadow-[0px_1px_5px_gray] rounded-xl p-2 z-50">
                                 <ul className="flex flex-col gap-2">
+                                    {/* for All products */}
                                     <li>
                                         <button onClick={() => {
                                             dispatch(setCategory(''))
@@ -93,6 +94,7 @@ function Header() {
                                             All
                                         </button>
                                     </li>
+                                    {/* fir All categories of products */}
                                     {uniqueCategories.map((e) => (
                                         <li key={e}>
                                             <button
@@ -114,7 +116,7 @@ function Header() {
                 </nav>
 
                 {/* Cart */}
-                <Link to={'/cart'} className="relative hidden md:block">
+                <Link to={'/cart'} className="relative hidden md:block hover:scale-105 transition">
                     <img
                         src="/shopping-cart.png"
                         loading="lazy"
