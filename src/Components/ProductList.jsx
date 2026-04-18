@@ -6,11 +6,14 @@ import NotFoundPage from './NotFoundPage';
 import Search from './Search';
 import { useSelector } from 'react-redux';
 import { selectSearchText } from '../utils/searchSlice';
+import { selectedCategory } from '../utils/categorySlice';
 
 function ProductList() {
   const { data, loading, error } = useCustomHook();
   // console.log([productData, loading, error ,'fetched data from Product list']);
 
+  const category = useSelector(selectedCategory)
+  console.log('selected category is', category)
   const searchedText = useSelector(selectSearchText)
 
   const [productData, setProductData] = useState([])
@@ -30,17 +33,27 @@ function ProductList() {
   const filteredData = productData.filter((el) => {
     return (
       el.title.toLowerCase().includes(searchedText.toLowerCase()) ||
-      el.category.toLowerCase().includes(searchedText.toLowerCase()) 
+      el.category.toLowerCase().includes(searchedText.toLowerCase())
     )
   })
+
+  const filteredCategory = category ? productData.filter((item) => item.category === category) : productData
+
   return (
     <>
       <Search />
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:p-4 justify-center gap-0 md:gap-6'>
         {
-          filteredData.map((el) => (
-            <ProductItem key={el.id} data={el} />
-          ))
+          filteredCategory ?
+            (
+              filteredCategory.map((el) => (
+                <ProductItem key={el.id} data={el} />
+              ))
+            ) : (
+              filteredData.map((el) => (
+                <ProductItem key={el.id} data={el} />
+              ))
+            )
         }
       </div>
     </>
