@@ -9,9 +9,6 @@ import { Outlet } from 'react-router-dom'
 import Footer from './Components/Footer'
 
 function App() {
-  // const [cart, setCart] = useState([])
-  // const [data, setData] = useState([])
-  // useEffect(() => {
 
   // }, [])
   return (

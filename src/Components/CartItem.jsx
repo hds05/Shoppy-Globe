@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { decreaseQty, increaseQty, removeFromCart } from "../utils/cartSlice";
 
 function CartItem({ item }) {
@@ -8,7 +8,7 @@ function CartItem({ item }) {
         <>
             <div className="border p-2">
                 <div>
-                    <img src={item.thumbnail} alt="" />
+                    <img src={item.thumbnail} alt={item.title} loading="lazy" />
                 </div>
                 <h1>{item.title}</h1>
                 <div className="flex gap-2">

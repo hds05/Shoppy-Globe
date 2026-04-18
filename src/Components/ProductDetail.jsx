@@ -33,6 +33,7 @@ function ProductDetail() {
           <img
             src={productDetail?.thumbnail}
             alt={productDetail?.title}
+            loading='lazy'
             className="w-[350px] rounded-2xl object-cover"
           />
         </div>

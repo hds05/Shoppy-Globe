@@ -16,7 +16,7 @@ function ProductItem(props) {
         <div id={props.data.id} className='flex flex-col h-[450px] justify-between shadow-[0px_0px_3px_black] p-2 px-4 md:rounded-2xl'>
           <h1 className='text-2xl font-semibold'>{props.data.title}</h1>
           <div className='flex justify-center my-4'>
-            <img src={props.data.thumbnail} width={'150px'} alt="" />
+            <img src={props.data.thumbnail} width={'150px'} loading='lazy' alt="product-img" />
           </div>
           <h1>{props.data.category}</h1>
           <p className='text-sm md:text-md text-gray-500'>{props.data.description}</p>

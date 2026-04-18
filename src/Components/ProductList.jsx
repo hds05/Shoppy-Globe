@@ -5,12 +5,13 @@ import Loader from './Loader';
 import NotFoundPage from './NotFoundPage';
 import Search from './Search';
 import { useSelector } from 'react-redux';
+import { selectSearchText } from '../utils/searchSlice';
 
 function ProductList() {
   const { data, loading, error } = useCustomHook();
   // console.log([productData, loading, error ,'fetched data from Product list']);
 
-  const searchedText = useSelector((state) => state.search.text)
+  const searchedText = useSelector(selectSearchText)
 
   const [productData, setProductData] = useState([])
   useEffect(() => {

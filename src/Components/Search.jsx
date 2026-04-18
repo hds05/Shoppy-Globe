@@ -1,11 +1,11 @@
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { setSearchText } from "../utils/searchSlice";
+import { selectSearchText, setSearchText } from "../utils/searchSlice";
 
 function Search(props) {
     // const [searchingText, setSearchingText] = useState('')
 
-    const search = useSelector((state) => state.search.text)
+    const search = useSelector(selectSearchText)
     const dispatch = useDispatch()
 
     function handleSearch(e) {

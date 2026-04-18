@@ -1,13 +1,14 @@
 import { useSelector } from "react-redux";
 import CartItem from "./CartItem";
+import { cartItems } from "../utils/cartSlice";
 
 function Cart() {
-  const cart = useSelector((state) => state.cart.items)
+  const cart = useSelector(cartItems)
 
   return (
     <>
       {cart.length ? (
-        <div className="h-screen">
+        <div className="min-h-screen">
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {cart.map((e) => (
               <CartItem key={e.id} item={e} />
