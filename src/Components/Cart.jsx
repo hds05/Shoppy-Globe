@@ -23,13 +23,13 @@ function Cart() {
       {cart.length ? (
         <div className="min-h-screen p-4 md:p-8 relative">
           <div className="flex justify-between items-center mb-6">
-            <h1 className="text-2xl md:text-3xl font-bold">
+            <h1 className="text-lg md:text-2xl md:text-3xl font-bold">
               Your Cart ({totalItems} items)
             </h1>
 
             <button
               onClick={() => dispatch(emptyCart())}
-              className="bg-red-500 hover:bg-red-600 text-white px-4 py-2 rounded-xl"
+              className="bg-red-500 hover:bg-red-600 text-white p-2 md:px-4 md:py-2 rounded-xl"
             >
               Clear Cart
             </button>
@@ -44,7 +44,7 @@ function Cart() {
               Total: ${totalPrice}
             </h2>
 
-            <button onClick={() => setShowCheckout(true)} className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl font-bold">
+            <button onClick={() => setShowCheckout(true)} className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl font-bold cursor-pointer">
               Proceed to Checkout
             </button>
             {

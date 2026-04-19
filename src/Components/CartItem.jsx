@@ -1,5 +1,6 @@
 import { useDispatch } from "react-redux";
 import { decreaseQty, increaseQty, removeFromCart } from "../utils/cartSlice";
+import { Link } from "react-router-dom";
 
 function CartItem({ item }) {
     const dispatch = useDispatch();
@@ -8,14 +9,16 @@ function CartItem({ item }) {
 
     return (
         <div className="flex flex-col justify-between gap-4 bg-white rounded-3xl shadow-[0px_2px_10px_rgba(0,0,0,0.1)] p-4 hover:shadow-[0px_4px_18px_rgba(0,0,0,0.15)] transition">
-            <div className="flex justify-center items-center rounded-3xl shadow-[0px_0px_3px_black]">
-                <img
-                    src={item.thumbnail}
-                    alt={item.title}
-                    loading="lazy"
-                    className="w-[120px] h-[120px] object-cover "
-                />
-            </div>
+            <Link to={`/product/${item.id}`}>
+                <div className="flex justify-center items-center rounded-3xl shadow-[0px_0px_3px_black]">
+                    <img
+                        src={item.thumbnail}
+                        alt={item.title}
+                        loading="lazy"
+                        className="w-[120px] h-[120px] object-cover "
+                    />
+                </div>
+            </Link>
 
             <div className="flex flex-col gap-2">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
@@ -76,9 +79,8 @@ function CartItem({ item }) {
                 </div>
 
                 <p
-                    className={`text-sm font-medium mt-1 ${
-                        item.stock > 0 ? "text-green-600" : "text-red-500"
-                    }`}
+                    className={`text-sm font-medium mt-1 ${item.stock > 0 ? "text-green-600" : "text-red-500"
+                        }`}
                 >
                     {item.stock > 0
                         ? `${item.stock} items available`
