@@ -2,8 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import CartItem from "./CartItem";
 import { cartItems, emptyCart } from "../utils/cartSlice";
 import { Link } from "react-router-dom";
+import Checkout from "./Checkout";
+import { useState } from "react";
 
 function Cart() {
+
+  const [showCheckout, setShowCheckout] = useState(false)
+
   const cart = useSelector(cartItems);
   const dispatch = useDispatch();
 
@@ -11,16 +16,20 @@ function Cart() {
   const totalPrice = cart.reduce(
     (acc, item) => acc + item.price * item.quantity,
     0
-  );
-  window.scrollTo({
-    top: 0,
-    behaivor : 'smooth'
-  })
+  ).toFixed(2);
+  // window.scrollTo({
+  //   top: 0,
+  //   behaivor : 'smooth'
+  // })
+
+  // function handleCheckout(){
+  //   <CheckoutPage />
+  // }
 
   return (
     <>
       {cart.length ? (
-        <div className="min-h-screen p-4 md:p-8">
+        <div className="min-h-screen p-4 md:p-8 relative">
           <div className="flex justify-between items-center mb-6">
             <h1 className="text-2xl md:text-3xl font-bold">
               Your Cart ({totalItems} items)
@@ -40,12 +49,15 @@ function Cart() {
           </div>
           <div className="mt-8 p-6 bg-gray-100 rounded-2xl flex flex-col md:flex-row justify-between items-center gap-4">
             <h2 className="text-xl font-semibold">
-              Total: ${totalPrice.toFixed(2)}
+              Total: ${totalPrice}
             </h2>
 
-            <button className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl font-bold">
+            <button onClick={() => setShowCheckout(true)} className="bg-green-600 hover:bg-green-700 text-white px-6 py-3 rounded-2xl font-bold">
               Proceed to Checkout
             </button>
+            {
+              showCheckout && <Checkout setShowCheckout={setShowCheckout} totalPrice={totalPrice} totalItems={totalItems} />
+            }
           </div>
 
         </div>
