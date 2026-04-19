@@ -59,7 +59,7 @@ function Cart() {
           <h1 className="text-xl md:text-2xl font-semibold text-gray-600">
             Your Cart is Empty 🛒
           </h1>
-          <Link to={'/'} className="bg-green-400 px-4 py-2 rounded-4xl text-white">
+          <Link to={'/'} className="bg-green-400 px-4 py-2 rounded-4xl hover:bg-green-500 hover:shadow-[0px_0px_6px_gray] text-white">
               Back to shop
           </Link>
         </div>

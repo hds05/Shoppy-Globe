@@ -84,7 +84,7 @@ function Checkout({ setShowCheckout, totalPrice, totalItems }) {
             {orderPlaced && (
                 <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-[50]">
                     <div className="bg-white rounded-3xl p-6 shadow-2xl text-center">
-                        <img src="https://static.wixstatic.com/media/3ad450_ffe60bd6ab114199b50bed5a9efde163~mv2.gif" alt="" />
+                        <img src="/tick.gif" alt="" />
                         <h1 className="text-2xl font-bold text-green-600">
                             Order Placed!!
                         </h1>

@@ -35,14 +35,14 @@ function Header() {
         <header className="sticky top-0 z-50 bg-white shadow-[1px_1px_5px_gray] rounded-[0px_0px_30px_30px]">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 md:px-10 md:py-6">
 
-                <div className=" w-full md:w-fit flex justify-between">
+                <div className=" w-full md:w-fit flex justify-between items-center">
 
                     {/* Logo */}
                     <Link to={'/'}>
                         <img
                             src="/shoppyglobe.png"
                             loading="lazy"
-                            className="w-[150px] md:w-[200px]"
+                            className="w-[250px] md:w-[250px]"
                             alt="logo"
                         />
                     </Link>

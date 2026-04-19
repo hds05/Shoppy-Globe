@@ -7,12 +7,13 @@ import { Provider } from 'react-redux'
 import { store } from './utils/store.js'
 import Loader from './Components/Loader.jsx'
 
-const NotFoundPage = lazy(() => import('./Components/NotFoundPage.jsx'))
+const About = lazy(() => import('./Components/About.jsx'))
 const Cart = lazy(() => import('./Components/Cart.jsx'))
 const ProductDetail = lazy(() => import('./Components/ProductDetail.jsx'))
 const ProductList = lazy(() => import('./Components/ProductList.jsx'))
-const appRouter = createBrowserRouter([
+const NotFoundPage = lazy(() => import('./Components/NotFoundPage.jsx'))
 
+const appRouter = createBrowserRouter([
   {
     // Home route
     path: '/',
@@ -23,13 +24,26 @@ const appRouter = createBrowserRouter([
         <NotFoundPage />
       </Suspense>,
     children: [
-      // Home route
+   
       {
         path: '/',
         element:
           <Suspense fallback={<Loader />}>
             <ProductList />
           </Suspense>,
+      },
+
+      {
+        path: '/about',
+        element:
+          <Suspense fallback={<Loader />}>
+            <About />
+          </Suspense>,
+        errorElement: <div className='h-screen flex justify-center items-center'>
+          <div className='bg-white w-fit h-1/5 rounded-3xl p-4 m-2 flex justify-center items-center text-center'>
+            <h1>There is no About Page...😬😬</h1>
+          </div>
+        </div>
       },
 
       // Product detail route
