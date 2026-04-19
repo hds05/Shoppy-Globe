@@ -4,11 +4,6 @@ import { Link } from 'react-router-dom'
 import { addToCart } from '../utils/cartSlice';
 
 function ProductItem(props) {
-  // console.log(props, ' This is props room product item');
-
-  // const cart = useSelector((state) => state.cart.items)
-  // console.log(cart);
-  
   const dispatch = useDispatch();
   return (
     <>
@@ -22,7 +17,6 @@ function ProductItem(props) {
           <p className='text-sm md:text-md text-gray-500 line-clamp-3'>{props.data.description}</p>
           <div className='text-center my-4'>
 
-            {/* <button onClick={(e)=> dispatch(addToCart())} className='bg-black text-white rounded-4xl p-0 text-[12px] md:text-md px-2 md:px-4 py-2'>Add to cart</button> */}
             <button
               onClick={(e) => {
                 e.preventDefault();

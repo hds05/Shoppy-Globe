@@ -8,9 +8,9 @@ function Footer() {
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div className='flex flex-col items-center'>
                     <a href="#">
-                        <img src="/shoppyglobe.png" loading='lazy' width={'300px'} alt="" />
+                        <img src="/shoppyglobe.png" loading='lazy' className='w-[200px] mb-4 md:w-[300px]' alt="" />
                     </a>
-                    <p className="text-sm text-gray-900">
+                    <p className="text-xs md:text-sm text-gray-900">
                         Your one-stop destination for all your shopping needs.
                         Fast delivery, best prices, and quality products.
                     </p>

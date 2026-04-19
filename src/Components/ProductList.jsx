@@ -10,7 +10,6 @@ import { selectedCategory } from '../utils/categorySlice';
 
 function ProductList() {
   const { data, loading, error } = useCustomHook();
-  // console.log([productData, loading, error ,'fetched data from Product list']);
 
   const category = useSelector(selectedCategory)
   console.log('selected category is', category)
@@ -31,33 +30,20 @@ function ProductList() {
   </div>
 
   const finalData = productData.filter((el) => {
-    // return (
-    //   el.title.toLowerCase().includes(searchedText.toLowerCase()) ||
-    //   el.category.toLowerCase().includes(searchedText.toLowerCase())
-    // )
     const matchesCatgry = category ? el.category === category : true
     const matchesSrch = el.title.toLowerCase().includes(searchedText.toLowerCase()) ||
     el.category.toLowerCase().includes(searchedText.toLowerCase())
     return matchesCatgry && matchesSrch  
   })
 
-  // const filteredCategory = category ? productData.filter((item) => item.category === category) : productData
-
   return (
     <>
       <Search />
       <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 md:p-4 justify-center gap-0 md:gap-6'>
         {
-          // finalData ?
-          //   (
               finalData.map((el) => (
                 <ProductItem key={el.id} data={el} />
               ))
-            // ) : (
-            //   filteredData.map((el) => (
-            //     <ProductItem key={el.id} data={el} />
-            //   ))
-            // )
         }
       </div>
     </>

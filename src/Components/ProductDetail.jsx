@@ -8,20 +8,20 @@ import { addToCart, cartItems } from '../utils/cartSlice';
 function ProductDetail() {
   const [productDetail, setProductDetail] = useState([])
   const { data, loading, error } = useCustomHook()
-  // console.log(data);
 
   const dispatch = useDispatch()
 
   const { id } = useParams()
   console.log(id, "id from detail");
+
+
   useEffect(() => {
     if (data) {
-      const detailOfProduct = data.find((e) => e.id == id)
+      const detailOfProduct = data.find((e) => e.id == Number(id))
       console.log(detailOfProduct, "detail of product form detail page");
       setProductDetail(detailOfProduct)
     }
   }, [data])
-  // console.log(productDetail);
   if (loading) return <Loader />
   if (error) return <div className='flex justify-center items-center m-2'>
     <div className='flex flex-col items-center w-fit p-4 shadow-[0px_0px_2px_gray] rounded-4xl'>
@@ -30,13 +30,25 @@ function ProductDetail() {
     </div>
   </div>
 
+  const ValidId = data.map((e) => e.id)
+  console.log(ValidId, 'valid ID');
 
-  // useEffect(() => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  // }, [])
+  if (id && !ValidId.includes(Number(id))) {
+    return (
+      <div className="h-screen flex justify-center items-center">
+        <div className="bg-white p-6 rounded-3xl shadow-[0px_0px_5px_gray] text-center">
+          <h1 className="text-xl font-semibold">
+            There is no product with this ID 😬
+          </h1>
+        </div>
+      </div>
+    )
+  }
+
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
 
   return (
     <div className="m-6">

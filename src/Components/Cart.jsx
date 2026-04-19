@@ -17,14 +17,6 @@ function Cart() {
     (acc, item) => acc + item.price * item.quantity,
     0
   ).toFixed(2);
-  // window.scrollTo({
-  //   top: 0,
-  //   behaivor : 'smooth'
-  // })
-
-  // function handleCheckout(){
-  //   <CheckoutPage />
-  // }
 
   return (
     <>
@@ -42,7 +34,7 @@ function Cart() {
               Clear Cart
             </button>
           </div>
-          <div className="flex flex-col gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-4">
             {cart.map((item) => (
               <CartItem key={item.id} item={item} />
             ))}

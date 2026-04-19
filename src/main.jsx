@@ -29,7 +29,7 @@ const appRouter = createBrowserRouter([
         element:
           <Suspense fallback={<Loader />}>
             <ProductList />
-          </Suspense>
+          </Suspense>,
       },
 
       // Product detail route
@@ -38,7 +38,12 @@ const appRouter = createBrowserRouter([
         element:
           <Suspense fallback={<Loader />}>
             <ProductDetail />
-          </Suspense>
+          </Suspense>,
+        errorElement: <div className='h-screen flex justify-center items-center'>
+          <div className='bg-white w-fit h-1/5 rounded-3xl p-4 m-2 flex justify-center items-center text-center'>
+            <h1>There is no element with this ID...😬😬</h1>
+          </div>
+        </div>
       },
 
       // Cart route
@@ -47,13 +52,14 @@ const appRouter = createBrowserRouter([
         element:
           <Suspense fallback={<h1>Wait... i am trying to get you cart.</h1>}>
             <Cart />
-          </Suspense>
+          </Suspense>,
+        errorElement:
+          <div className='h-screen flex justify-center items-center'>
+            <div className='bg-white w-fit h-1/5 rounded-3xl p-4 m-2 flex justify-center items-center text-center'>
+              <h1>There is some issue with cart...😬😬</h1>
+            </div>
+          </div>
       },
-
-      // checkout route
-      {
-        path: '/checkout'
-      }
     ],
   },
 ])

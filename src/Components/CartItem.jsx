@@ -7,8 +7,8 @@ function CartItem({ item }) {
     const totalPrice = (item.price * item.quantity).toFixed(2);
 
     return (
-        <div className="flex flex-col sm:flex-row gap-4 bg-white rounded-3xl shadow-[0px_2px_10px_rgba(0,0,0,0.1)] p-4 hover:shadow-[0px_4px_18px_rgba(0,0,0,0.15)] transition">
-            <div className="flex justify-center items-center md:w-1/5 rounded-3xl shadow-[0px_0px_3px_black]">
+        <div className="flex flex-col justify-between gap-4 bg-white rounded-3xl shadow-[0px_2px_10px_rgba(0,0,0,0.1)] p-4 hover:shadow-[0px_4px_18px_rgba(0,0,0,0.15)] transition">
+            <div className="flex justify-center items-center rounded-3xl shadow-[0px_0px_3px_black]">
                 <img
                     src={item.thumbnail}
                     alt={item.title}
@@ -17,7 +17,7 @@ function CartItem({ item }) {
                 />
             </div>
 
-            <div className="flex-1 flex flex-col gap-2">
+            <div className="flex flex-col gap-2">
                 <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-2">
                     <div>
                         <h1 className="text-lg md:text-xl font-bold text-gray-800">
