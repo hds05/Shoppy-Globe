@@ -7,24 +7,32 @@ import { Provider } from 'react-redux'
 import { store } from './utils/store.js'
 import Loader from './Components/Loader.jsx'
 
+// lazy loading components so they are loaded only when needed
 const About = lazy(() => import('./Components/About.jsx'))
 const Cart = lazy(() => import('./Components/Cart.jsx'))
 const ProductDetail = lazy(() => import('./Components/ProductDetail.jsx'))
 const ProductList = lazy(() => import('./Components/ProductList.jsx'))
 const NotFoundPage = lazy(() => import('./Components/NotFoundPage.jsx'))
 
+// all routes of the application
 const appRouter = createBrowserRouter([
   {
-    // Home route
+    // Parent route
     path: '/',
-    element:
-      <App />,
+
+    // main layout component
+    element: <App />,
+
+    // component shown if route does not exist
     errorElement:
       <Suspense fallback={<Loader />}>
         <NotFoundPage />
       </Suspense>,
+
+    // child routes rendered inside Outlet of App component
     children: [
-   
+
+      // home page route
       {
         path: '/',
         element:
@@ -33,6 +41,7 @@ const appRouter = createBrowserRouter([
           </Suspense>,
       },
 
+      // about page route
       {
         path: '/about',
         element:
@@ -46,7 +55,7 @@ const appRouter = createBrowserRouter([
         </div>
       },
 
-      // Product detail route
+      // Product detail page route
       {
         path: '/product/:id',
         element:
@@ -60,7 +69,7 @@ const appRouter = createBrowserRouter([
         </div>
       },
 
-      // Cart route
+      // Cart page route
       {
         path: '/cart',
         element:
@@ -79,8 +88,14 @@ const appRouter = createBrowserRouter([
 ])
 createRoot(document.getElementById('root')).render(
   <StrictMode>
+
+    {/* Provider gives redux store access to whole app */}
     <Provider store={store}>
+
+      {/* RouterProvider makes routing work in app */}
       <RouterProvider router={appRouter} />
+
     </Provider>
+
   </StrictMode>,
 )

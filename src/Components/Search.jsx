@@ -23,8 +23,10 @@ function Search(props) {
                 value={search}
                 // updates the Reduux state whenever input changes
                 onChange={handleSearch} />
+
+            {/* Button to clear the input */}
             {
-                search.length ? (<button onClick={()=> dispatch(setInputEmpty())} className="cursor-pointer">
+                search.length ? (<button onClick={() => dispatch(setInputEmpty())} className="cursor-pointer">
                     <img src="/cancel.png" className="w-[35px]" alt="" />
                 </button>) : ''
             }

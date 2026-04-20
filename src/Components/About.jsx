@@ -2,8 +2,11 @@ import React from 'react'
 
 export default function About() {
     return (
+        // About main container
         <div className="min-h-screen bg-gray-50 px-4 py-10 md:px-10 lg:px-20">
             <div className="mx-auto max-w-6xl">
+
+                {/* About heading */}
                 <div className="rounded-3xl bg-blue-400/40 p-8 shadow-[0px_4px_20px_rgba(0,0,0,0.08)] md:p-12">
                     <h1 className="text-center text-4xl font-bold text-gray-800 md:text-5xl">
                         About <span className='text-blue-700'>Shoppy</span><span className='text-orange-600'>Globe</span>
@@ -15,6 +18,7 @@ export default function About() {
                     </p>
                 </div>
 
+                {/* Our Story */}
                 <div className="mt-10 grid gap-8 lg:grid-cols-2">
                     <div className="rounded-3xl bg-white p-8 shadow-[0px_4px_20px_rgba(0,0,0,0.08)]">
                         <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">
@@ -27,6 +31,7 @@ export default function About() {
                         </p>
                     </div>
 
+                    {/* What makes us (this web) different */}
                     <div className="rounded-3xl bg-white p-8 shadow-[0px_4px_20px_rgba(0,0,0,0.08)]">
                         <h2 className="mb-4 text-2xl font-bold text-gray-800 md:text-3xl">
                             What Makes Us Different?
@@ -59,6 +64,7 @@ export default function About() {
                     </div>
                 </div>
 
+                {/* Status */}
                 <div className="mt-10 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     <div className="rounded-3xl bg-white p-6 text-center shadow-[0px_4px_20px_rgba(0,0,0,0.08)]">
                         <h2 className="text-3xl font-bold text-black">100+</h2>
@@ -80,6 +86,8 @@ export default function About() {
                         <p className="mt-2 text-gray-600">Possibilities</p>
                     </div>
                 </div>
+
+                {/* Thanks Note */}
                 <div className="mt-10 rounded-3xl bg-black px-6 py-10 text-center text-white shadow-[0px_4px_20px_rgba(0,0,0,0.2)] md:px-12">
                     <h2 className="text-3xl font-bold">Thanks for Visiting ShoppyGlobe!</h2>
                     <p className="mx-auto mt-4 max-w-2xl text-gray-300 leading-7">

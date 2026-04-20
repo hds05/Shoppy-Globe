@@ -3,6 +3,7 @@ import { Hourglass } from 'react-loader-spinner'
 
 function Loader() {
     return (
+        // full screen container for loader
         <div className='w-full h-screen flex justify-center items-center'>
             (<Hourglass
                 visible={true}

@@ -4,8 +4,13 @@ import { AiOutlineYoutube } from "react-icons/ai";
 
 function Footer() {
     return (
+        // footer section
         <footer className="bg-gray-300 text-black text-center px-6 py-10 mt-10">
+
+            {/* grid container for footer sections */}
             <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
+
+                {/* logo and short description section */}
                 <div className='flex flex-col items-center'>
                     <a href="#">
                         <img src="/shoppyglobe.png" loading='lazy' className='w-[200px] mb-4 md:w-[300px]' alt="" />
@@ -15,15 +20,19 @@ function Footer() {
                         Fast delivery, best prices, and quality products.
                     </p>
                 </div>
+
+                {/* shop links section */}
                 <div>
                     <h2 className="font-semibold mb-3">Shop</h2>
                     <ul className="space-y-2 text-gray-900 text-sm">
-                        <li>All Products</li>
-                        <li>Categories</li>
-                        <li>Deals</li>
-                        <li>New Arrivals</li>
+                        <li><a href="#">All Products</a></li>
+                        <li><a href="#">Categories</a></li>
+                        <li><a href="#">Deals</a></li>
+                        <li><a href="#">New Arrivals</a></li>
                     </ul>
                 </div>
+
+                {/* support section */}
                 <div>
                     <h2 className="font-semibold mb-3">Support</h2>
                     <ul className="space-y-2 text-gray-900 text-sm">
@@ -33,6 +42,8 @@ function Footer() {
                         <li><a href="#">Returns</a></li>
                     </ul>
                 </div>
+
+                {/* social media section */}
                 <div className='flex flex-col items-center'>
                     <h2 className="font-semibold mb-3">Follow Us</h2>
                     <div className="flex gap-4 text-xl">
@@ -45,8 +56,9 @@ function Footer() {
                         <AiOutlineYoutube className="cursor-pointer hover:text-red-500" />
                     </div>
                 </div>
-
             </div>
+
+            {/* copyright section */}
             <div className="border-t border-gray-700 mt-8 pt-4 text-center text-sm text-gray-900">
                 © 2026 ShopyGlobe. All rights reserved.
             </div>

@@ -5,24 +5,34 @@ import { selectedCategory, setCategory } from "../utils/categorySlice";
 import { useCustomHook } from "../utils/useCustomHook";
 
 function Header() {
+    // state to control category dropdown
     const [dropdown, setDropdown] = useState(false)
+
+    // custom hook to fetch products data
     const { data } = useCustomHook()
 
+    // extracting only unique categories from fetched data
     const uniqueCategories = data
         ? [...new Set(data.map((item) => item.category))]
         : []
 
+    // getting total quantity of all items in cart
     const totalItems = useSelector((state) =>
         state.cart.items.reduce((acc, curr) => acc + curr.quantity, 0)
     )
 
+    // getting category from redux store
     const category = useSelector(selectedCategory)
+
+    // dispatch function to send actions to redux
     const dispatch = useDispatch()
 
+    // function for dropdown
     function handleDropdown() {
         setDropdown(!dropdown)
     }
 
+    // object to show proper labels for categories
     const categoryLabel = {
         '': 'All',
         'beauty': 'Beauty',
@@ -32,12 +42,13 @@ function Header() {
     }
 
     return (
+        // main header container
         <header className="sticky top-0 z-50 bg-white shadow-[1px_1px_5px_gray] rounded-[0px_0px_30px_30px]">
             <div className="flex flex-col md:flex-row items-center justify-between gap-4 px-4 py-4 md:px-10 md:py-6">
 
                 <div className=" w-full md:w-fit flex justify-between items-center">
 
-                    {/* Logo */}
+                    {/* website Logo */}
                     <Link to={'/'}>
                         <img
                             src="/shoppyglobe.png"
@@ -46,7 +57,7 @@ function Header() {
                             alt="logo"
                         />
                     </Link>
-                    {/* Cart */}
+                    {/* cart icon visible only on small screens */}
                     <Link to={'/cart'} className="relative block md:hidden">
                         <img
                             src="/shopping-cart.png"
@@ -54,7 +65,7 @@ function Header() {
                             className="w-[35px] md:w-[40px]"
                             alt="cart-icon"
                         />
-
+                        {/* Display number of items in cart */}
                         <span className="absolute -top-2 -right-2 min-w-[20px] h-[20px] flex items-center justify-center rounded-full bg-black text-white text-[10px] md:text-xs px-1">
                             {totalItems}
                         </span>
@@ -63,10 +74,13 @@ function Header() {
 
                 {/* Navigation */}
                 <nav className="flex flex-wrap items-center justify-center gap-4 md:gap-8 text-sm md:text-xl font-['Nunito']">
-                    <Link to={'/'} onClick={()=> dispatch(setCategory(''))} className="hover:text-blue-500 hover:border-b transition">
+
+                    {/* Home page link */}
+                    <Link to={'/'} onClick={() => dispatch(setCategory(''))} className="hover:text-blue-500 hover:border-b transition">
                         Home
                     </Link>
 
+                    {/* About page link */}
                     <Link to={'/about'} className="hover:text-blue-500 hover:border-b transition">
                         About
                     </Link>
@@ -80,10 +94,11 @@ function Header() {
                             Categories
                         </button>
 
+                        {/* dropdown menu visible only when dropdown is true */}
                         {dropdown && (
                             <div className="absolute left-1/2 top-8 -translate-x-1/2 md:left-0 md:translate-x-0 w-[180px] bg-white shadow-[0px_1px_5px_gray] rounded-xl p-2 z-50">
                                 <ul className="flex flex-col gap-2">
-                                    {/* for All products */}
+                                    {/* Button for All products */}
                                     <li>
                                         <button onClick={() => {
                                             dispatch(setCategory(''))
@@ -94,17 +109,21 @@ function Header() {
                                             All
                                         </button>
                                     </li>
-                                    {/* fir All categories of products */}
+                                    {/* for All categories of products */}
                                     {uniqueCategories.map((e) => (
                                         <li key={e}>
                                             <button
                                                 onClick={() => {
+                                                    // update selected category in redux
                                                     dispatch(setCategory(e))
+
+                                                    // close dropdown after selection
                                                     setDropdown(false)
                                                 }}
                                                 className={`w-full text-left px-2 py-1 rounded-lg hover:bg-gray-100 hover:text-blue-500 transition ${category === e ? "text-blue-500 font-semibold" : ""
                                                     }`}
                                             >
+                                                {/* Display category name */}
                                                 {categoryLabel[e]}
                                             </button>
                                         </li>
@@ -115,7 +134,7 @@ function Header() {
                     </div>
                 </nav>
 
-                {/* Cart */}
+                {/* cart icon visible only on desktop */}
                 <Link to={'/cart'} className="relative hidden md:block hover:scale-105 transition">
                     <img
                         src="/shopping-cart.png"

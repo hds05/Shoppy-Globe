@@ -5,16 +5,26 @@ import { useNavigate } from 'react-router-dom'
 
 function Checkout({ setShowCheckout, totalPrice, totalItems }) {
 
+    // state to show/hide order placed popup
     const [orderPlaced, setOrderPlaced] = useState(false)
+
+    // dispatch hook to send actions to redux store
     const dispatch = useDispatch()
+
+    // getting all cart items from redux store
     const selectItems = useSelector(cartItems)
-    console.log(selectItems, 'selected items from checkoyt');
+
+    // navigator hook for navigation
     const navigate = useNavigate()
 
+    // function that runs when form is submitted
     function handlePlaceOrder(e) {
+        // prevents page refresh on form submit
         e.preventDefault()
+        // show order placed popup immediately
         setOrderPlaced(true)
 
+        // after 2 seconds: first, empty cart, then, hide popup. Finally, redirect user to home page
         setTimeout(() => {
             dispatch(emptyCart())
             setOrderPlaced(false)
@@ -23,9 +33,10 @@ function Checkout({ setShowCheckout, totalPrice, totalItems }) {
     }
 
     return (
+        // Container of checkout
         <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-50">
             <div className="bg-white w-[90%] max-w-lg rounded-3xl p-2 m-2 md:p-6 relative shadow-xl">
-
+                {/* close button to hide checkout */}
                 <button
                     onClick={() => setShowCheckout(false)}
                     className="absolute top-4 right-4 text-2xl cursor-pointer bg-red-600 hover:bg-red-800 rounded-4xl text-white p-2"
@@ -33,8 +44,10 @@ function Checkout({ setShowCheckout, totalPrice, totalItems }) {
                     ×
                 </button>
 
+                {/* heading */}
                 <h1 className="text-2xl text-center font-bold mb-4">Checkout</h1>
 
+                {/* container to show all items in cart */}
                 <div className="flex flex-col gap-2">
                     <p className='border-b border-gray-400'>Total Items: {totalItems}</p>
                     <div className=' overflow-auto h-[100px] md:h-[200px] border p-1 rounded-2xl'>
@@ -49,9 +62,14 @@ function Checkout({ setShowCheckout, totalPrice, totalItems }) {
                             })
                         }
                     </div>
+
+                    {/* total price of all cart items */}
                     <p className='text-right'>Total Price: ${totalPrice}</p>
+
+                    {/* checkout form */}
                     <form onSubmit={handlePlaceOrder} className='space-y-3' action="">
 
+                        {/* input for customer's name */}
                         <input
                             type="text"
                             required
@@ -59,6 +77,7 @@ function Checkout({ setShowCheckout, totalPrice, totalItems }) {
                             className="w-full border p-2 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 rounded-xl"
                         />
 
+                        {/* input for customer's phone number */}
                         <input
                             type="tel"
                             required
@@ -68,19 +87,23 @@ function Checkout({ setShowCheckout, totalPrice, totalItems }) {
                             className="w-full border p-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
 
+                        {/* input for customer's Address */}
                         <input
                             type="text"
                             required
                             placeholder="Enter your address"
                             className="w-full border p-2 rounded-xl focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                         />
-                        
+
+                        {/* Place order button */}
                         <button type='submit' className="w-full bg-green-600 text-white py-3 rounded-2xl hover:bg-green-700">
                             Place Order
                         </button>
                     </form>
                 </div>
             </div>
+
+            {/* if order placed true- popup to display Order Placed */}
             {orderPlaced && (
                 <div className="fixed inset-0 bg-black/50 flex justify-center items-center z-[50]">
                     <div className="bg-white rounded-3xl p-6 shadow-2xl text-center">
@@ -88,7 +111,6 @@ function Checkout({ setShowCheckout, totalPrice, totalItems }) {
                         <h1 className="text-2xl font-bold text-green-600">
                             Order Placed!!
                         </h1>
-
                         <p className="text-gray-600 mt-2">
                             Your order has been placed successfully.
                         </p>
