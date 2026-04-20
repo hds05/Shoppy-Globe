@@ -1,5 +1,6 @@
 @import "tailwindcss";
 
+/* Animation for NotFoundPage */
 .errMsg {
     animation: errDiv 2s linear infinite;
     font-family: "Montserrat", sans-serif;
@@ -24,5 +25,22 @@
 
     100% {
         box-shadow: 10px 0px 10px black;
+    }
+}
+
+.welcome {
+    animation: welcome 1.5s ease-in;
+    transition: all;
+}
+
+@keyframes welcome {
+    from {
+        opacity: 0;
+        transform: translateX(-30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0px)
     }
 }
