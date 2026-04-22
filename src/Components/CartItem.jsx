@@ -81,7 +81,11 @@ function CartItem({ item }) {
 
                             {/* Button to decrease the quantity */}
                             <button
-                                onClick={() => dispatch(decreaseQty(item.id))}
+                                onClick={(e) => {
+                                    e.preventDefault();
+                                    dispatch(decreaseQty(item.id))
+                                }
+                                }
                                 className="px-3 py-1 text-lg hover:bg-gray-100 transition cursor-pointer"
                             >
                                 -
@@ -94,7 +98,9 @@ function CartItem({ item }) {
 
                             {/* Button to increase the quantity */}
                             <button
-                                onClick={() => dispatch(increaseQty(item.id))}
+                                onClick={(e) => {
+                                    e.preventDefault()
+                                    dispatch(increaseQty(item.id))}}
                                 className="px-3 py-1 text-lg hover:bg-gray-100 transition cursor-pointer"
                             >
                                 +
